@@ -1,14 +1,28 @@
+<script lang="ts">
+	import type { PageData } from './$types';
+
+	export let data: PageData;
+
+	$: ({ articles } = data);
+</script>
+
 <div class="grid">
 	<div>
 		<h2>Articles:</h2>
-		<article>
-			<header />
-			<p />
-			<form action="?/deleteArticle&id=" method="POST">
-				<button type="submit" class="outline secondary">Delete Article</button>
-			</form>
-			<a href="/" role="button" class="outline constrast" style="width: 100%;">Edit Article</a>
-		</article>
+		{#each articles as articles}
+			<article>
+				<header>
+					{articles.title}
+				</header>
+				<p>
+					{articles.content}
+				</p>
+				<form action="?/deleteArticle&id=" method="POST">
+					<button type="submit" class="outline secondary">Delete Article</button>
+				</form>
+				<a href="/" role="button" class="outline constrast" style="width: 100%;">Edit Article</a>
+			</article>
+		{/each}
 	</div>
 	<form action="?/createArticle" method="POST">
 		<h3>New Article</h3>
