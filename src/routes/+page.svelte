@@ -9,15 +9,15 @@
 <div class="grid">
 	<div>
 		<h2>Articles:</h2>
-		{#each articles as articles}
+		{#each articles as article}
 			<article>
 				<header>
-					{articles.title}
+					{article.title}
 				</header>
 				<p>
-					{articles.content}
+					{article.content}
 				</p>
-				<form action="?/deleteArticle&id=" method="POST">
+				<form action="?/deleteArticle&id={article.id}" method="POST">
 					<button type="submit" class="outline secondary">Delete Article</button>
 				</form>
 				<a href="/" role="button" class="outline constrast" style="width: 100%;">Edit Article</a>
